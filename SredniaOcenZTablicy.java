@@ -36,9 +36,17 @@ public class SredniaOcenZTablicy {
         int suma = 0;
         System.out.println("Wprowadzanie ocen z " + przedmiot + ":");
         for (int i = 0; i < oceny.length; i++) {
-            System.out.printf("Podaj ocenę nr %d: ", i + 1);
-            oceny[i] = scanner.nextInt();
-            suma += oceny[i];
+            int ocena;
+            do {
+                System.out.printf("Podaj ocenę nr %d (1-6): ", i + 1);
+                ocena = scanner.nextInt();
+                if (ocena < 1 || ocena > 6) {
+                    System.out.println("Błędna ocena. Podaj ocenę w skali od 1 do 6.");
+                }
+            } while (ocena < 1 || ocena > 6);
+            
+            oceny[i] = ocena;
+            suma += ocena;
         }
         
         System.out.print("Wprowadzone oceny z " + przedmiot + ": ");
